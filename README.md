@@ -71,7 +71,7 @@ Demo users (header switcher): **Hana (Requester)** invites, **Deena (Approver)**
 
 ## Testing with real files
 
-The folder `261022 - C - Vendor Bridge Demo - Sample Documents` has one sub-folder per vendor (seven countries) plus a folder of documents that should fail. Upload those files on the vendor side: the demo recognises each file **by its name** and shows the matching extracted fields and checks. Any other file falls back to the hidden demo picker under the slot. Regenerate the folder with:
+The folder `261022 - C - Vendor Bridge Demo - Sample Documents` has one sub-folder per vendor (seven countries) plus a folder of documents that should fail. Upload those files on the vendor side: the demo recognises each file **by its name** and shows the matching extracted fields and checks. Any other file is treated as a good copy of that document. Regenerate the folder with:
 
 ```bash
 SAMPLES_EXPORT_DIR="/path/to/folder" npm run samples
@@ -90,7 +90,7 @@ Real logic, runs in the browser:
 - Segregation of duties, approval gated on the bank call-back box, full audit trail, SAP keying sheet, CSV export.
 
 Simulated, labelled "simulated" in the UI:
-- Document reading. Any uploaded file maps to a pre-canned result chosen by the hidden **Demo picker** under each slot (`src/lib/mockAi.ts`). Model shown as "Simulated extraction v0".
+- Document reading. A file from the sample folder is recognised by name; any other file is treated as a good copy of that document (`src/lib/mockAi.ts`). Model shown as "Simulated extraction v0".
 - Registry lookups (Wathq, DED, GAFI, MOCI, Sijilat, MOCIIP), tax checks (ZATCA, FTA, ETA, NBR, OTA), sanctions screen, SAP vendor list. Realistic 600–1500 ms delays.
 - Emails to vendors.
 

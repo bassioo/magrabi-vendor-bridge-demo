@@ -10,7 +10,7 @@ import { Headline } from '@/components/Headline';
 import { ProgressBar } from '@/components/Stepper';
 import { CheckRow } from '@/components/CheckRow';
 import { LevelChip } from '@/components/StatusChip';
-import { defaultSampleKey, extractDocument, pickerOptions, resolveSampleKey, vendorKeyFor, AI_MODEL_LABEL, checkReason, SAMPLE_DOCS } from '@/lib/mockAi';
+import { defaultSampleKey, extractDocument, resolveSampleKey, vendorKeyFor, AI_MODEL_LABEL, checkReason, SAMPLE_DOCS } from '@/lib/mockAi';
 import { liveExtract, LIVE_AI_ENABLED, LIVE_AI_MODEL } from '@/lib/liveAi';
 
 function Slot({ vendor, slot }: { vendor: Vendor; slot: ChecklistItem }) {
@@ -18,18 +18,15 @@ function Slot({ vendor, slot }: { vendor: Vendor; slot: ChecklistItem }) {
   const store = useStore();
   const vendorKey = vendorKeyFor(vendor.country, vendor);
   const doc: UploadedDoc | undefined = vendor.documents[slot.id];
-  const [picked, setPicked] = useState(doc?.sampleKey ?? defaultSampleKey(vendorKey, slot.id));
   const [reading, setReading] = useState(false);
   const [drag, setDrag] = useState(false);
   const [preview, setPreview] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
-  const options = pickerOptions(vendorKey, slot);
 
   const upload = async (fileName: string) => {
     setReading(true);
     const recognised = resolveSampleKey(fileName);
-    const key = recognised ?? picked;
-    if (recognised) setPicked(recognised);
+    const key = recognised ?? defaultSampleKey(vendorKey, slot.id);
     store.audit(vendor.id, 'Vendor', 'upload', `${doc ? 'Replaced' : 'Uploaded'} ${slot.label.toLowerCase()} · ${fileName}${recognised ? ` · recognised as "${SAMPLE_DOCS[recognised].title}"` : ''}`);
     const result = await extractDocument(slot, key, fileName, vendor);
     const live = LIVE_AI_ENABLED ? await liveExtract(result.image, slot.docType) : null;
@@ -95,12 +92,6 @@ function Slot({ vendor, slot }: { vendor: Vendor; slot: ChecklistItem }) {
       )}
       <input ref={fileRef} type="file" className="hidden" accept=".pdf,.png,.jpg,.jpeg" onChange={(e) => { onFiles(e.target.files); e.target.value = ''; }} />
 
-      <div className="mt-3 flex items-center gap-2 text-[11px] text-muted">
-        <span>{t('documents.demoPicker')}:</span>
-        <select value={picked} onChange={(e) => setPicked(e.target.value)} className="rounded border border-champagne/50 bg-white px-1.5 py-0.5 text-[11px] text-body" aria-label={`Demo picker for ${slot.label}`}>
-          {options.map((o) => <option key={o.key} value={o.key}>{pick(lang, o.label, o.labelAr)}</option>)}
-        </select>
-      </div>
     </div>
   );
 }
@@ -119,7 +110,7 @@ export function Documents({ vendor }: { vendor: Vendor }) {
       <ProgressBar value={66 + (uploaded.length / slots.length) * 17} className="mb-8" />
       <Headline eyebrow={t('documents.eyebrow')} text={t('documents.title')} accent={t('documents.titleAccent')} size="md" />
       <p className="mt-3 max-w-2xl text-sm text-body">{t('documents.intro')}</p>
-      <p className="mt-1 max-w-2xl text-xs text-muted">{pick(lang, 'Demo: files from the sample documents folder are recognised by name. Any other file uses the demo picker under the slot.', 'للعرض: الملفات من مجلد المستندات النموذجية يتم التعرّف عليها بالاسم. أي ملف آخر يستخدم الاختيار التجريبي أسفل الخانة.')}</p>
+      <p className="mt-1 max-w-2xl text-xs text-muted">{pick(lang, 'Demo: upload the files from the sample documents folder.', 'للعرض: ارفع الملفات من مجلد المستندات النموذجية.')}</p>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {slots.map((slot) => <Slot key={slot.id} vendor={vendor} slot={slot} />)}
       </div>
