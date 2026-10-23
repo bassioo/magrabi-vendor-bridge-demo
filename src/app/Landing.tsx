@@ -4,7 +4,7 @@ import { Building2, ClipboardCheck, PlayCircle } from 'lucide-react';
 import { Brand } from '@/components/Brand';
 import { DemoBanner } from '@/components/DemoBanner';
 import { useStore } from './store';
-import { useDemoVendors } from '@/components/VendorPicker';
+import { useDemoVendors, displayName } from '@/components/VendorPicker';
 import { COUNTRIES } from '@/data/countries';
 import { STATUS_LABEL, STATUS_LEVEL } from '@/lib/reviewChecks';
 import { LevelChip } from '@/components/StatusChip';
@@ -43,7 +43,7 @@ export function Landing() {
                 <li key={v.id}>
                   <Link to={`/vendor/${v.inviteId}`} className="group flex items-center gap-3 py-2 text-sm">
                     <span>{COUNTRIES[v.country].flag}</span>
-                    <span className="flex-1 truncate text-ink group-hover:underline">{v.name || v.email}</span>
+                    <span className="flex-1 truncate text-ink group-hover:underline">{displayName(v)}{!v.name && <span className="ms-1 text-xs text-muted">· {v.email}</span>}</span>
                     <LevelChip level={STATUS_LEVEL[v.status]} label={STATUS_LABEL[v.status]} />
                   </Link>
                 </li>

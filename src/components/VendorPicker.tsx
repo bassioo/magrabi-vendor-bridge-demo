@@ -4,6 +4,12 @@ import { useStore } from '@/app/store';
 import { COUNTRIES } from '@/data/countries';
 import { STATUS_LABEL } from '@/lib/reviewChecks';
 import type { Vendor } from '@/lib/types';
+import { sampleForVendor } from '@/lib/sampleCompanies';
+
+/** Name to show for a vendor, falling back to the sample company behind an invite that has not registered yet. */
+export function displayName(v: Vendor): string {
+  return v.name || sampleForVendor(v).company.legalName || v.email;
+}
 
 const ACTIVE: Vendor['status'][] = ['invited', 'draft', 'submitted', 'in_review', 'returned', 'approved', 'code_issued'];
 
@@ -33,7 +39,7 @@ export function VendorPicker({ current, compact = false }: { current?: Vendor; c
         {!current && <option value="">Choose…</option>}
         {list.map((v) => (
           <option key={v.id} value={v.id}>
-            {COUNTRIES[v.country].flag} {v.name || v.email} · {STATUS_LABEL[v.status]}
+            {COUNTRIES[v.country].flag} {displayName(v)} · {STATUS_LABEL[v.status]}
           </option>
         ))}
       </select>
