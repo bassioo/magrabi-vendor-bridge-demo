@@ -24,7 +24,7 @@ function Row({ label, value, source, lang }: { label: string; value: string; sou
   );
 }
 
-export function ReviewSubmit({ vendor }: { vendor: Vendor }) {
+export function ReviewSubmit({ vendor, readOnly = false }: { vendor: Vendor; readOnly?: boolean }) {
   const { t, lang } = useLang();
   const store = useStore();
   const [agree, setAgree] = useState(false);
@@ -44,10 +44,10 @@ export function ReviewSubmit({ vendor }: { vendor: Vendor }) {
   };
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <ProgressBar value={90} className="mb-8" />
-      <Headline eyebrow={t('review.eyebrow')} text={t('review.title')} accent={t('review.titleAccent')} size="md" />
-      <p className="mt-3 text-sm text-body">{t('review.intro')}</p>
+    <div className={`mx-auto max-w-3xl ${readOnly ? '[&_.btn-ghost]:hidden' : ''}`}>
+      {!readOnly && <ProgressBar value={90} className="mb-8" />}
+      <Headline eyebrow={t('review.eyebrow')} text={readOnly ? pick(lang, 'Your', 'طلبك') : t('review.title')} accent={readOnly ? pick(lang, 'submission.', 'كما أُرسل.') : t('review.titleAccent')} size="md" />
+      {!readOnly && <p className="mt-3 text-sm text-body">{t('review.intro')}</p>}
 
       <div className="mt-6 space-y-4">
         <section className="card p-5">
@@ -94,7 +94,7 @@ export function ReviewSubmit({ vendor }: { vendor: Vendor }) {
         </section>
       </div>
 
-      <div className="card mt-6 p-5">
+      {!readOnly && <div className="card mt-6 p-5">
         <label className="flex items-start gap-3 text-sm text-body">
           <input type="checkbox" className="mt-0.5 h-4 w-4 accent-[#2C6E7C]" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
           {t('review.confirm')}
@@ -105,7 +105,7 @@ export function ReviewSubmit({ vendor }: { vendor: Vendor }) {
             {busy && <Loader2 size={14} className="animate-spin" />} {busy ? t('review.submitting') : t('review.submit')}
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

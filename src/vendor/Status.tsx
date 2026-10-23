@@ -1,4 +1,6 @@
-import { Check, Mail, RotateCcw } from 'lucide-react';
+import { Check, Mail, RotateCcw, FileText } from 'lucide-react';
+import { useState } from 'react';
+import { ReviewSubmit } from './ReviewSubmit';
 import type { Vendor } from '@/lib/types';
 import { useStore } from '@/app/store';
 import { useLang, pick } from '@/lib/i18n';
@@ -14,11 +16,21 @@ export function StatusTracker({ vendor }: { vendor: Vendor }) {
   const returned = vendor.status === 'returned';
   const title = returned ? ['titleReturned', 'titleReturnedAccent'] : vendor.status === 'code_issued' ? ['titleCode', 'titleCodeAccent'] : vendor.status === 'approved' ? ['titleApproved', 'titleApprovedAccent'] : ['title', 'titleAccent'];
   const times = [vendor.submittedAt, vendor.reviewStartedAt, vendor.approvedAt, vendor.codeIssuedAt];
+  const [showSubmission, setShowSubmission] = useState(false);
 
   const resubmit = () => {
     store.update(vendor.id, (v) => ({ ...v, stage: 'documents', status: 'draft' }));
     store.audit(vendor.id, 'Vendor', 'system', 'Started updating the registration after return');
   };
+
+  if (showSubmission) {
+    return (
+      <div>
+        <button className="mb-4 inline-flex items-center gap-1 text-xs text-muted hover:text-ink" onClick={() => setShowSubmission(false)}>← {t('status.eyebrow')}</button>
+        <ReviewSubmit vendor={vendor} readOnly />
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-3xl">
@@ -52,6 +64,8 @@ export function StatusTracker({ vendor }: { vendor: Vendor }) {
           <button className="btn-teal mt-5" onClick={resubmit}><RotateCcw size={14} /> {t('status.resubmit')}</button>
         </div>
       )}
+
+      <button className="btn-secondary mt-5" onClick={() => setShowSubmission(true)}><FileText size={14} /> {pick(lang, 'View my submission', 'عرض طلبي')}</button>
 
       {vendor.status === 'code_issued' && <div className="card mt-5 bg-cream p-6 text-base text-ink">{t('status.codeText', { code: vendor.vendorCode ?? '' })}</div>}
       {vendor.status === 'approved' && <div className="card mt-5 bg-cream p-6 text-base text-ink">{t('status.approvedText')}</div>}

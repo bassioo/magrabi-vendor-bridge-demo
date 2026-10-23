@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, CheckCircle2, Send, ShieldAlert, UserRound } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Send, ShieldAlert, UserRound, Eye } from 'lucide-react';
+import { OPEN_LINKS_IN_NEW_TAB } from '@/lib/routerMode';
 import { useToast } from '@/components/Toast';
 import { useStore } from '@/app/store';
 import { DocViewer } from '@/components/DocViewer';
@@ -70,6 +71,7 @@ export function VendorReview() {
             <span>· Invited by {vendor.invitedBy}</span>
             {vendor.approvedBy && <span>· Approved by {vendor.approvedBy}</span>}
             <span>· Assignee: {vendor.assignee ? vendor.assignee.split(' ')[0] : 'none'}</span>
+            <Link to={`/vendor/${vendor.inviteId}`} target={OPEN_LINKS_IN_NEW_TAB ? '_blank' : undefined} className="inline-flex items-center gap-1 text-teal underline"><Eye size={12} /> Vendor's view</Link>
             {canAct && vendor.assignee !== store.currentUser && (
               <button className="text-gold-deep underline" onClick={() => { store.patch(vendor.id, { assignee: store.currentUser }); store.audit(vendor.id, store.currentUser, 'review', `Assigned to ${store.currentUser}`); }}>Assign to me</button>
             )}
