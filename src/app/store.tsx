@@ -3,7 +3,7 @@ import type { AppState, AuditEntry, Country, DemoUser, Email, EmailKind, SapVend
 import { buildSeed } from '@/data/seed';
 import { nowIso, uid } from '@/lib/format';
 
-const STORAGE_KEY = 'vendor-bridge-demo:v5';
+const STORAGE_KEY = 'vendor-bridge-demo:v6';
 
 type Action =
   | { type: 'reset' }

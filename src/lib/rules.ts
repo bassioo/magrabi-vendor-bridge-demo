@@ -39,27 +39,38 @@ export function normaliseName(name: string): string {
     .replace(/[أإآ]/g, 'ا')
     .replace(/ة/g, 'ه')
     .replace(/ى/g, 'ي')
-    .replace(/\b(llc|l\.l\.c\.|ltd|limited|co\.?|company|est\.?|establishment|trading|for trading|شركة|مؤسسة|ذ\.?م\.?م\.?|المحدودة|للتجارة|التجارية)\b/g, ' ')
+    .replace(/\b(llc|l\.l\.c\.?|wll|w\.l\.l\.?|sal|s\.a\.l\.?|jsc|plc|ltd|limited|co\.?|company|est\.?|establishment|trading|for trading|شركة|مؤسسة|ذ\.?م\.?م\.?|ش\.?م\.?م\.?|المحدودة|للتجارة|التجارية)\b/g, ' ')
     .replace(/[^\p{L}\p{N}\s]/gu, ' ')
     .replace(/\band\b|&|و /g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-/** Loose match: token overlap of normalised names (handles 'Al Noor Print House' vs 'ALNOOR PRINTING HOUSE'). */
+/** Word stems so 'promotions' and 'promotional' compare equal. */
+function stem(t: string): string {
+  return t.length >= 6 ? t.slice(0, 6) : t;
+}
+
+/**
+ * Name match for the duplicate check and the account-holder check.
+ * Exact or containment after normalisation, or at least 75% of the shorter name's words (stemmed) found in the other,
+ * with a minimum of two words. 'Manama Optical Fixtures' vs 'Riyadh Optical Fixtures' is NOT a match (2 of 3).
+ */
 export function namesMatch(a: string, b: string): boolean {
   const na = normaliseName(a).replace(/\s/g, '');
   const nb = normaliseName(b).replace(/\s/g, '');
   if (!na || !nb) return false;
   if (na === nb) return true;
   if (na.includes(nb) || nb.includes(na)) return true;
-  const ta = new Set(normaliseName(a).split(' ').filter((t) => t.length > 2));
-  const tb = new Set(normaliseName(b).split(' ').filter((t) => t.length > 2));
+  const ta = new Set(normaliseName(a).split(' ').filter((t) => t.length > 2).map(stem));
+  const tb = new Set(normaliseName(b).split(' ').filter((t) => t.length > 2).map(stem));
+  if (ta.size === 0 || tb.size === 0) return false;
   let hits = 0;
   ta.forEach((t) => {
     if (tb.has(t)) hits += 1;
   });
-  return hits >= Math.min(2, Math.max(ta.size, tb.size));
+  const smaller = Math.min(ta.size, tb.size);
+  return hits >= 2 && hits / smaller >= 0.75;
 }
 
 export function countryIbanPrefix(country: Country): string {

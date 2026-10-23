@@ -4,6 +4,8 @@ import { CHECKLISTS } from './checklists';
 import { SAMPLE_COMPANIES, sampleForCountry, type SampleCompany } from '@/lib/sampleCompanies';
 import { buildUploadedDoc, defaultSampleKey, vendorKeyFor, AI_MODEL_LABEL } from '@/lib/mockAi';
 import { daysAgo, uid } from '@/lib/format';
+import { makeIban } from '@/lib/iban';
+import { COUNTRIES } from './countries';
 
 const HANA = 'Hana (Requester)';
 const DEENA = 'Deena (Approver)';
@@ -62,6 +64,19 @@ function fromSample(s: SampleCompany, extra: Partial<Vendor>): Vendor {
   });
 }
 
+function histBban(country: Country, i: number): string {
+  const n = (s: number) => (10 ** s + i * 7919).toString().slice(-s);
+  switch (country) {
+    case 'KSA': return `20${n(18)}`;
+    case 'UAE': return `026${n(16)}`;
+    case 'EG': return `0019${n(4)}${n(17)}`;
+    case 'KW': return `HIST${n(22)}`;
+    case 'QA': return `HIST${n(21)}`;
+    case 'BH': return `HIST${n(14)}`;
+    case 'OM': return `012${n(16)}`;
+  }
+}
+
 function historical(i: number, name: string, nameAr: string, country: Country, category: string, inviteDays: number, submitDays: number, reviewDays: number, codeDays: number | null, opts: { returned?: boolean; status?: Vendor['status'] } = {}): Vendor {
   const regNumber = country === 'KSA' ? `10109${(10000 + i * 731).toString().slice(-5)}` : country === 'UAE' ? `CN-9${(100000 + i * 4321).toString().slice(-6)}` : country === 'EG' ? `9${(1000 + i * 97).toString().slice(-4)}` : `${(500000 + i * 7919).toString()}`;
   const vat = country === 'KSA' ? `3009${(1000000000 + i * 12345).toString().slice(-10)}3` : country === 'UAE' ? `1009${(100000000 + i * 54321).toString().slice(-11)}` : country === 'EG' ? `9${(10 + i).toString().slice(-2)}-${(100 + i * 7).toString().slice(-3)}-${(100 + i * 13).toString().slice(-3)}` : country === 'BH' ? `2009${(10000000000 + i * 777).toString().slice(-11)}` : country === 'OM' ? `OM11000${(10000 + i * 31).toString().slice(-5)}` : '';
@@ -87,7 +102,7 @@ function historical(i: number, name: string, nameAr: string, country: Country, c
     returnCount: opts.returned ? 1 : 0,
     company: { regNumber, legalName: name, legalNameAr: nameAr, regStatus: 'Active', issueDate: '2022-02-01', expiryDate: '2028-01-31', city: sampleForCountry(country).company.city, address: 'Sample address' },
     tax: { vatNumber: vat },
-    bank: { iban: '', bankName: 'Sample Bank', accountHolder: name },
+    bank: { iban: makeIban(COUNTRIES[country].ibanPrefix, histBban(country, i)), bankName: 'Sample Bank', accountHolder: name },
     bankIsNew: false,
   });
   v.audit = [

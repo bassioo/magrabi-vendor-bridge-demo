@@ -90,7 +90,8 @@ export function Queue() {
           <tbody>
             {rows.map((v) => {
               const submitted = v.status !== 'invited' && v.status !== 'draft';
-              const sum = submitted ? checkSummaryText(reviewChecks(v, state.sapVendors)) : null;
+              const decided = v.status === 'approved' || v.status === 'code_issued';
+              const sum = !submitted ? null : decided ? { text: 'All checks passed', level: 'pass' as const } : v.status === 'returned' ? { text: v.returnNote?.items?.[0] ? `Returned: ${v.returnNote.items[0]}` : 'Returned to vendor', level: 'flag' as const } : checkSummaryText(reviewChecks(v, state.sapVendors));
               return (
                 <tr key={v.id} className={`border-t border-greige hover:bg-cream/40 ${submitted ? 'cursor-pointer' : ''}`} onClick={() => submitted && navigate(`/procurement/vendors/${v.id}`)}>
                   <td className="px-4 py-3">
