@@ -43,7 +43,7 @@ export function TourProvider({ children }: { children: ReactNode }) {
     setActive(true);
   }, []);
 
-  // Navigate to the step's route when it changes
+  // Navigate to the step's route when it changes; drop the previous spotlight so a slow page never shows a stale ring
   useEffect(() => {
     if (!active || !current) return;
     if (location.pathname !== current.path) navigate(current.path);
@@ -53,6 +53,7 @@ export function TourProvider({ children }: { children: ReactNode }) {
   // Find and measure the target (poll briefly: the page may still be rendering)
   useLayoutEffect(() => {
     if (!active || !current) return;
+    setRect(null); // never show the previous step's ring while this one is still rendering
     let tries = 0;
     let cancelled = false;
     const measure = () => {
@@ -116,7 +117,7 @@ export function TourProvider({ children }: { children: ReactNode }) {
         createPortal(
           <div className="fixed inset-0 z-[70]" role="dialog" aria-modal="true" aria-label="Guided tour">
             {rect ? (
-              <div className="absolute rounded-2xl ring-2 ring-gold transition-all duration-300" style={{ top: rect.top - pad, left: rect.left - pad, width: rect.width + pad * 2, height: rect.height + pad * 2, boxShadow: '0 0 0 9999px rgba(30,27,24,0.62)' }} />
+              <div data-tour-spotlight className="absolute rounded-2xl ring-2 ring-gold transition-all duration-300" style={{ top: rect.top - pad, left: rect.left - pad, width: rect.width + pad * 2, height: rect.height + pad * 2, boxShadow: '0 0 0 9999px rgba(30,27,24,0.62)' }} />
             ) : (
               <div className="absolute inset-0 bg-espresso/60" />
             )}

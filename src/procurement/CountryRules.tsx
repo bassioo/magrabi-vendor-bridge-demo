@@ -14,7 +14,7 @@ export function CountryRules() {
       <h1 className="text-4xl">Seven markets, <span className="accent">one flow, different paperwork.</span></h1>
       <p className="mt-2 max-w-2xl text-sm text-body">Each country has its own registry, tax regime, document list and IBAN format. These rules drive the vendor checklist, the instant checks and the review screen. They are a starting point for procurement to confirm, and they live in one file: <code className="rounded bg-white px-1 text-xs">src/data/countries.ts</code>.</p>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="mt-6 flex flex-wrap gap-2" data-tour="country-tabs">
         {COUNTRY_ORDER.map((c) => (
           <button key={c} onClick={() => setActive(c)} className={`rounded-full px-3.5 py-1.5 text-sm font-medium ${active === c ? 'bg-gold text-white' : 'bg-white text-body hover:bg-cream'}`}>
             {COUNTRIES[c].flag} {COUNTRIES[c].name}

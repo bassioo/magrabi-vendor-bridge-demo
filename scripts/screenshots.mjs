@@ -46,7 +46,9 @@ for (let run = 1; run <= runs; run += 1) {
     if ((await next.count()) === 0) break;
     await next.click();
     steps += 1;
-    await page.waitForTimeout(650);
+    await page.waitForTimeout(900);
+    const title = await page.locator('[role=dialog][aria-label="Guided tour"] h3').innerText();
+    assert((await page.locator('[data-tour-spotlight]').count()) === 1, `tour step ${steps} "${title}" found its target`);
     if (run === 1 && steps === 7) await shot(page, 'tour-step-checks');
     if (run === 1 && steps === 12) await shot(page, 'tour-step-vendor');
   }
