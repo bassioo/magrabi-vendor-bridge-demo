@@ -1,0 +1,212 @@
+[
+  {
+    "key": "alnoor-registration-form",
+    "folder": "01 KSA · Al Noor Print House (clean path)",
+    "file": "1 Vendor registration form"
+  },
+  {
+    "key": "alnoor-cr",
+    "folder": "01 KSA · Al Noor Print House (clean path)",
+    "file": "2 Commercial registration (CR)"
+  },
+  {
+    "key": "alnoor-vat",
+    "folder": "01 KSA · Al Noor Print House (clean path)",
+    "file": "3 VAT certificate"
+  },
+  {
+    "key": "alnoor-bank-letter",
+    "folder": "01 KSA · Al Noor Print House (clean path)",
+    "file": "4 Bank letter"
+  },
+  {
+    "key": "alnoor-quotation",
+    "folder": "01 KSA · Al Noor Print House (clean path)",
+    "file": "5 Signed quotation"
+  },
+  {
+    "key": "bright-trade-licence",
+    "folder": "02 UAE · Bright Display Trading (old bank letter, then new)",
+    "file": "1 Trade licence"
+  },
+  {
+    "key": "bright-vat",
+    "folder": "02 UAE · Bright Display Trading (old bank letter, then new)",
+    "file": "2 TRN certificate"
+  },
+  {
+    "key": "bright-bank-letter-old",
+    "folder": "02 UAE · Bright Display Trading (old bank letter, then new)",
+    "file": "3a Bank letter - 8 months old (fails)"
+  },
+  {
+    "key": "bright-bank-letter-new",
+    "folder": "02 UAE · Bright Display Trading (old bank letter, then new)",
+    "file": "3b Bank letter - new (passes)"
+  },
+  {
+    "key": "bright-quotation",
+    "folder": "02 UAE · Bright Display Trading (old bank letter, then new)",
+    "file": "4 Signed quotation"
+  },
+  {
+    "key": "nile-commercial-register",
+    "folder": "03 Egypt · Nile Gifts & Promotions (duplicate in SAP)",
+    "file": "1 Commercial register"
+  },
+  {
+    "key": "nile-tax-card",
+    "folder": "03 Egypt · Nile Gifts & Promotions (duplicate in SAP)",
+    "file": "2 Tax card"
+  },
+  {
+    "key": "nile-vat",
+    "folder": "03 Egypt · Nile Gifts & Promotions (duplicate in SAP)",
+    "file": "3 VAT certificate"
+  },
+  {
+    "key": "nile-bank-letter",
+    "folder": "03 Egypt · Nile Gifts & Promotions (duplicate in SAP)",
+    "file": "4 Bank letter"
+  },
+  {
+    "key": "nile-quotation",
+    "folder": "03 Egypt · Nile Gifts & Promotions (duplicate in SAP)",
+    "file": "5 Signed quotation"
+  },
+  {
+    "key": "nile-einvoice",
+    "folder": "03 Egypt · Nile Gifts & Promotions (duplicate in SAP)",
+    "file": "6 E-invoice registration"
+  },
+  {
+    "key": "kw-registration-form",
+    "folder": "04 Kuwait · Gulf Shopfit",
+    "file": "1 Vendor registration form"
+  },
+  {
+    "key": "kw-cr",
+    "folder": "04 Kuwait · Gulf Shopfit",
+    "file": "2 Commercial licence"
+  },
+  {
+    "key": "kw-bank-letter",
+    "folder": "04 Kuwait · Gulf Shopfit",
+    "file": "3 Bank letter"
+  },
+  {
+    "key": "kw-quotation",
+    "folder": "04 Kuwait · Gulf Shopfit",
+    "file": "4 Signed quotation"
+  },
+  {
+    "key": "qa-registration-form",
+    "folder": "05 Qatar · Doha Promotions",
+    "file": "1 Vendor registration form"
+  },
+  {
+    "key": "qa-cr",
+    "folder": "05 Qatar · Doha Promotions",
+    "file": "2 Commercial registration (CR)"
+  },
+  {
+    "key": "qa-tax-card",
+    "folder": "05 Qatar · Doha Promotions",
+    "file": "3 Tax card"
+  },
+  {
+    "key": "qa-bank-letter",
+    "folder": "05 Qatar · Doha Promotions",
+    "file": "4 Bank letter"
+  },
+  {
+    "key": "qa-quotation",
+    "folder": "05 Qatar · Doha Promotions",
+    "file": "5 Signed quotation"
+  },
+  {
+    "key": "bh-cr",
+    "folder": "06 Bahrain · Manama Optical Fixtures",
+    "file": "1 Commercial registration (CR)"
+  },
+  {
+    "key": "bh-vat",
+    "folder": "06 Bahrain · Manama Optical Fixtures",
+    "file": "2 VAT certificate (NBR)"
+  },
+  {
+    "key": "bh-bank-letter",
+    "folder": "06 Bahrain · Manama Optical Fixtures",
+    "file": "3 Bank letter"
+  },
+  {
+    "key": "bh-quotation",
+    "folder": "06 Bahrain · Manama Optical Fixtures",
+    "file": "4 Signed quotation"
+  },
+  {
+    "key": "om-cr",
+    "folder": "07 Oman · Muscat Facilities Management",
+    "file": "1 Commercial registration (CR)"
+  },
+  {
+    "key": "om-vat",
+    "folder": "07 Oman · Muscat Facilities Management",
+    "file": "2 VAT certificate (OTA)"
+  },
+  {
+    "key": "om-bank-letter",
+    "folder": "07 Oman · Muscat Facilities Management",
+    "file": "3 Bank letter"
+  },
+  {
+    "key": "om-quotation",
+    "folder": "07 Oman · Muscat Facilities Management",
+    "file": "4 Signed quotation"
+  },
+  {
+    "key": "jeddah-registration-form",
+    "folder": "09 KSA · Jeddah Optical Fixtures (second live run)",
+    "file": "1 Vendor registration form"
+  },
+  {
+    "key": "jeddah-cr",
+    "folder": "09 KSA · Jeddah Optical Fixtures (second live run)",
+    "file": "2 Commercial registration (CR)"
+  },
+  {
+    "key": "jeddah-vat",
+    "folder": "09 KSA · Jeddah Optical Fixtures (second live run)",
+    "file": "3 VAT certificate"
+  },
+  {
+    "key": "jeddah-bank-letter",
+    "folder": "09 KSA · Jeddah Optical Fixtures (second live run)",
+    "file": "4 Bank letter"
+  },
+  {
+    "key": "jeddah-quotation",
+    "folder": "09 KSA · Jeddah Optical Fixtures (second live run)",
+    "file": "5 Signed quotation"
+  },
+  {
+    "key": "sample-blurry",
+    "folder": "08 Test cases · should fail",
+    "file": "Blurry scan (illegible)"
+  },
+  {
+    "key": "sample-unstamped",
+    "folder": "08 Test cases · should fail",
+    "file": "Unstamped copy (no stamp or signature)"
+  },
+  {
+    "key": "sample-invoice",
+    "folder": "08 Test cases · should fail",
+    "file": "Tax invoice (wrong document type)"
+  },
+  {
+    "key": "bright-bank-letter-old",
+    "folder": "08 Test cases · should fail",
+    "file": "Bank letter dated 8 months ago"
+  }
+]

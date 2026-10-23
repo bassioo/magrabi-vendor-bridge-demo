@@ -1,0 +1,155 @@
+{
+  "brand": {
+    "name": "MAGRABi",
+    "header": "MAGRABi · Vendor Onboarding",
+    "footer": "Demo · sample data · MAGRABi Vendor Management",
+    "banner": "Demo · sample data"
+  },
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "save": "Save & resume later",
+    "saved": "Saved. You can close this page and come back later.",
+    "required": "Required",
+    "optional": "Optional",
+    "simulated": "simulated",
+    "demoFill": "Fill with sample data (demo)",
+    "verifiedOfficial": "Verified · official source",
+    "aiConsistent": "AI-extracted · consistent",
+    "needsReview": "Needs review",
+    "pass": "Pass",
+    "flag": "Check",
+    "fail": "Fix",
+    "pending": "Pending",
+    "edit": "Edit"
+  },
+  "welcome": {
+    "eyebrow": "Vendor registration",
+    "title": "Welcome to MAGRABi,",
+    "titleAccent": "let's get you registered.",
+    "invited": "{company} has invited you to register as a supplier for {category}.",
+    "needTitle": "What you'll need",
+    "needIntro": "Based on your country ({country}), please have these ready:",
+    "noInvoice": "A signed quotation or contract is enough. We never ask for an invoice before the purchase order.",
+    "time": "About 10 minutes. You can save and come back any time.",
+    "start": "Start",
+    "resume": "Continue where you left off",
+    "principle": "Our AI reads your documents. Our rules check them. Official registries confirm them. A person at MAGRABi decides.",
+    "how1": "1 · Fill in 4 short steps",
+    "how1b": "Company, tax, bank, contacts. Save any time.",
+    "how2": "2 · Upload your documents",
+    "how2b": "We read each one instantly and tell you if something needs fixing.",
+    "how3": "3 · A person at MAGRABi approves",
+    "how3b": "You get your vendor code by email."
+  },
+  "form": {
+    "eyebrow": "Step {n} of 4",
+    "steps": {
+      "company": "Company",
+      "tax": "Tax",
+      "bank": "Bank",
+      "contacts": "Contacts"
+    },
+    "company": {
+      "title": "Tell us about",
+      "titleAccent": "your company.",
+      "regNumber": "{label}",
+      "lookup": "Looking up {registry}…",
+      "found": "Verified · {registry} ({simulated})",
+      "notFound": "We couldn't find this number in {registry}. Please check it, or type the details below.",
+      "legalName": "Legal name (English)",
+      "legalNameAr": "Legal name (Arabic)",
+      "status": "Registration status",
+      "issueDate": "Issue date",
+      "expiryDate": "Expiry date",
+      "city": "City",
+      "address": "Address",
+      "hint": "Enter the number exactly as it appears on your registration."
+    },
+    "tax": {
+      "title": "Your",
+      "titleAccent": "tax registration.",
+      "vat": "{label}",
+      "hint": "We check the format now and confirm it with the tax authority after you submit."
+    },
+    "bank": {
+      "title": "Where should",
+      "titleAccent": "we pay you?",
+      "iban": "IBAN",
+      "ibanHint": "We validate the checksum instantly so typos are caught before anyone sees it.",
+      "ibanOk": "IBAN checksum valid · {bank}",
+      "bankName": "Bank name",
+      "holder": "Account holder name (as on the bank letter)",
+      "holderHint": "This must match your legal name. Bank details are always confirmed by a person at MAGRABi before payment."
+    },
+    "contacts": {
+      "title": "Who should",
+      "titleAccent": "we talk to?",
+      "sales": "Sales contact",
+      "ar": "Accounts receivable contact",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "continue": "Continue to documents"
+  },
+  "documents": {
+    "eyebrow": "Documents",
+    "title": "Upload your",
+    "titleAccent": "documents.",
+    "intro": "One slot per document. We read each file as soon as it lands and tell you straight away if something needs fixing.",
+    "drop": "Drop a file here or click to upload",
+    "reading": "Reading document…",
+    "replace": "Replace",
+    "uploaded": "Uploaded",
+    "demoPicker": "Demo picker",
+    "checks": {
+      "type": "Document type",
+      "legible": "Legible scan",
+      "stamp": "Stamp or signature",
+      "date": "Dates within policy"
+    },
+    "allGood": "All documents passed. You're ready to review and submit.",
+    "fixFirst": "Please fix the documents marked red before you continue.",
+    "continue": "Continue to review",
+    "missing": "{n} document(s) still needed"
+  },
+  "review": {
+    "eyebrow": "Review & submit",
+    "title": "One last",
+    "titleAccent": "look.",
+    "intro": "Every field below shows where it came from. Anything marked 'needs review' will be checked by a person.",
+    "company": "Company",
+    "tax": "Tax",
+    "bank": "Bank",
+    "contacts": "Contacts",
+    "documents": "Documents",
+    "confirm": "I confirm these details are correct and the documents are genuine.",
+    "submit": "Submit registration",
+    "submitting": "Submitting…"
+  },
+  "status": {
+    "eyebrow": "Application status",
+    "title": "Thanks,",
+    "titleAccent": "we've got it.",
+    "titleReturned": "A few things",
+    "titleReturnedAccent": "to fix.",
+    "titleApproved": "You're",
+    "titleApprovedAccent": "approved.",
+    "titleCode": "Welcome",
+    "titleCodeAccent": "aboard.",
+    "steps": {
+      "submitted": "Submitted",
+      "in_review": "In review",
+      "approved": "Approved",
+      "code_issued": "Vendor code issued"
+    },
+    "ref": "Reference",
+    "whatNext": "What happens next",
+    "nextText": "Procurement reviews your file. Most registrations are reviewed within two working days. We'll email {email} at each step.",
+    "returnedTitle": "What to fix",
+    "resubmit": "Update and resubmit",
+    "codeText": "Your MAGRABi vendor code is {code}. Please quote it on every quotation and invoice.",
+    "approvedText": "Your registration is approved. Your vendor code will follow shortly."
+  }
+}

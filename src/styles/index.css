@@ -1,0 +1,49 @@
+@import '@fontsource/lora/400.css';
+@import '@fontsource/lora/400-italic.css';
+@import '@fontsource/lora/600.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/ibm-plex-sans-arabic/400.css';
+@import '@fontsource/ibm-plex-sans-arabic/500.css';
+@import '@fontsource/ibm-plex-sans-arabic/600.css';
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { background: var(--greige); }
+  body { @apply bg-greige text-body font-sans antialiased; }
+  [dir='rtl'] body, [dir='rtl'] { font-family: 'IBM Plex Sans Arabic', 'Noto Kufi Arabic', Inter, sans-serif; }
+  [dir='rtl'] .font-serif { font-family: 'IBM Plex Sans Arabic', 'Noto Kufi Arabic', serif; font-weight: 600; }
+  h1, h2, h3 { @apply font-serif text-ink; }
+  input, select, textarea { @apply bg-white; }
+  *:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+}
+
+@layer components {
+  .eyebrow { @apply text-[11px] font-bold tracking-[0.14em] text-gold-deep; }
+  .card { @apply bg-card rounded-card shadow-card; }
+  .accent { @apply font-serif italic text-gold-deep; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-gold text-white hover:bg-gold-deep; }
+  .btn-teal { @apply btn bg-teal text-white hover:bg-teal-deep; }
+  .btn-secondary { @apply btn bg-white border border-champagne text-ink hover:bg-cream; }
+  .btn-ghost { @apply btn text-body hover:bg-cream; }
+  .input { @apply w-full rounded-xl border border-champagne/70 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30; }
+  .label { @apply mb-1.5 block text-xs font-medium text-body; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-medium; }
+  .shimmer { background: linear-gradient(90deg, #f3f1eb 25%, #e6e3dc 50%, #f3f1eb 75%); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+}
+
+@layer utilities {
+  .page-enter { animation: fade-up 0.28s ease-out both; }
+  .tour-card { animation: pop 0.22s ease-out both; }
+  .lens-bg { background-image: radial-gradient(circle at 85% 20%, rgba(168,136,76,0.10) 0, rgba(168,136,76,0.10) 180px, transparent 181px), radial-gradient(circle at 85% 20%, rgba(168,136,76,0.08) 0, rgba(168,136,76,0.08) 300px, transparent 301px), radial-gradient(circle at 85% 20%, rgba(168,136,76,0.06) 0, rgba(168,136,76,0.06) 440px, transparent 441px); }
+}
+@keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes pop { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .page-enter, .tour-card { animation: none; } }
