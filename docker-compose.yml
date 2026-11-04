@@ -1,0 +1,12 @@
+services:
+  vendorhub:
+    build: .
+    ports: ["8787:8787"]
+    env_file: .env
+    environment:
+      - DATA_DIR=/data
+    volumes:
+      - vendorhub-data:/data
+    restart: unless-stopped
+volumes:
+  vendorhub-data:

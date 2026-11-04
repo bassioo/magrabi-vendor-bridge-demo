@@ -1,0 +1,22 @@
+{
+  "name": "magrabi-vendor-hub",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MAGRABi Vendor Hub: vendor onboarding across seven markets. AI reads, rules check, registries confirm, a person decides.",
+  "workspaces": ["packages/shared", "apps/api", "apps/web"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "concurrently -n api,web -c gold,cyan \"npm run dev -w apps/api\" \"npm run dev -w apps/web\"",
+    "build": "npm run build -w packages/shared && npm run build -w apps/web && npm run build -w apps/api",
+    "start": "node apps/api/dist/server.js",
+    "seed": "npm run seed -w apps/api",
+    "test": "npm run test -w packages/shared && npm run test -w apps/api",
+    "e2e": "node scripts/e2e.mjs",
+    "typecheck": "npm run typecheck -w packages/shared && npm run typecheck -w apps/api && npm run typecheck -w apps/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "playwright": "1.56.1",
+    "typescript": "^5.6.3"
+  }
+}

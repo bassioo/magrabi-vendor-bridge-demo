@@ -1,0 +1,23 @@
+/* MAGRABi house style tokens */
+:root {
+  --espresso: #1e1b18;
+  --greige: #eceae4;
+  --cream: #fbf3e1;
+  --card: #ffffff;
+  --gold: #a8884c;
+  --gold-deep: #8e7338;
+  --champagne: #c9b488;
+  --teal: #2c6e7c;
+  --grey: #8c8983;
+  --ink: #2a2723;
+  --body: #3b3833;
+  --muted: #9a968f;
+  --pass: #3f7d58;
+  --pass-bg: #e8f1ea;
+  --flag: #9a6a12;
+  --flag-bg: #fbf0d9;
+  --fail: #a4443a;
+  --fail-bg: #f7e3e0;
+  --shadow-card: 0 8px 24px rgba(30, 27, 24, 0.08);
+  --radius-card: 16px;
+}
