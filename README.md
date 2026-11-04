@@ -1,5 +1,7 @@
 # MAGRABi Vendor Management · Onboarding bridge (demo)
 
+> This is the clickable demo for team review. The production codebase is **MAGRABi Vendor Hub**: https://github.com/bassioo/magrabi-vendor-hub
+
 A clickable demo of the **AI bridge** for vendor onboarding at MAGRABi, across seven markets (KSA, UAE, Egypt, Kuwait, Qatar, Bahrain, Oman): vendors self-register through one bilingual link, upload documents and get instant feedback; procurement reviews each vendor in a queue with AI-extracted fields beside the documents, approves or returns it, and gets a ready-to-key SAP sheet.
 
 **AI reads. Rules check. Registries confirm. A person decides.**
